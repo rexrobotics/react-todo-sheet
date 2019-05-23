@@ -13,8 +13,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component {
   state = {
-    todos:[]}  
-  ;
+    todos:[]
+  };
   
 //todo delete function handler
     onDelete =(todoid) => {
@@ -38,7 +38,7 @@ class App extends Component {
       completed:false
 
     }
-    this.setState({todos:[...this.state.todos,newTodo]});
+    this.setState({todos:[newTodo,...this.state.todos]});
   }
 
   render(){
