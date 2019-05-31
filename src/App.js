@@ -39,6 +39,17 @@ class App extends Component {
 
     }
     this.setState({todos:[newTodo,...this.state.todos]});
+  
+  }
+  componentWillMount(){
+    if(localStorage.getItem("notes")){
+      const saved = JSON.parse(localStorage.getItem("notes"));
+      this.setState({todos:saved});
+    }
+  }
+
+  saveToLocal = () => {
+    localStorage.setItem("notes",JSON.stringify(this.state.todos));
   }
 
   render(){
@@ -59,7 +70,10 @@ class App extends Component {
       </Router>
      );
   }
- 
+
+  componentDidUpdate(prevprops){
+    this.saveToLocal();
+  }
 }
 
 export default App;
